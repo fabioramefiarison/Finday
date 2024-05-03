@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './Components/Header';
+import Baniere from './Components/Baniere';
+import Story from './Components/Story';
+import Nouveaux from './Components/Nouveaux';
+import Produits from "./Components/Produits";
+import Commentaire from "./Components/Commentaire";
+import Message from "./Components/Message";
 
 function App() {
+  const [panier, setPanier] = useState(0)
+
+  const incrementPanier = ()=> {
+    setPanier(panier + 1)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={"App"}>
+       <Header panier={panier}/> 
+       <Baniere incrementPanier={incrementPanier}/>
+       <Story/>
+       <Nouveaux incrementPanier={incrementPanier}/>
+       <Produits incrementPanier={incrementPanier}/>
+       <Message/>
+       <Commentaire/>
     </div>
   );
 }
